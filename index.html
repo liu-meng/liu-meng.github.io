@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
+	<!-- 使百度地图页面更好的在移动平台上展示 -->
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 	<script
 		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- Custom Theme files -->
@@ -23,6 +25,8 @@
 	<link href="http://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300i,400,400i,600,600i,700" rel="stylesheet">
 	<!-- //web-fonts -->
+	<!-- 百度地图 -->
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=sgIWhqdqd9QAfCHns1McOyaq4O9dDncD"></script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -109,9 +113,12 @@
 				</div>
 			</div>
 			<div class="ab-w3-agile-inner">
-				<div class="col-md-6 ab-w3-agile-part">
+				<!-- <div class="col-md-6 ab-w3-agile-part">
 					
-				</div>
+				</div> -->
+				<!-- 百度地图 -->
+				<div class="col-md-6 mapContainer" id="mapContainer"></div> 
+
 				<div class="col-md-6 ab-w3-agile-part two">
 				</div>
 				<div class="clearfix"></div>
@@ -473,6 +480,25 @@
 			});
 
 		});
+
+		//----百度地图start------
+	
+		var map = new BMap.Map("mapContainer");    
+		var point = new BMap.Point(115.061544,38.029748);    
+		map.centerAndZoom(point, 15);    
+		var marker = new BMap.Marker(point);        // 创建标注    
+		map.addOverlay(marker);                     // 将标注添加到地图中 
+		var opts = {    
+			width : 100,     // 信息窗口宽度    
+			height: 50,     // 信息窗口高度    
+			title : "乐享广告&福临家政"  // 信息窗口标题   
+		}    
+		var infoWindow = new BMap.InfoWindow("河北省 晋州市 和平街94号（防疫站南行200米）", opts);  // 创建信息窗口对象    
+		map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+
+		//----百度地图end------
+
+
 	</script>
 	<script>
 		// You can also use "$(window).load(function() {"
